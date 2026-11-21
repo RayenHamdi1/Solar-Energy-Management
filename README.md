@@ -1,11 +1,13 @@
 # Solar Energy Management
 
-A Spring Boot backend for managing solar-energy clients, employees, inventory,
-delivery notes, STEG dossiers, invoices, payments, and dashboard metrics.
+A full-stack student-friendly portfolio project for managing solar-energy
+clients, employees, inventory, delivery notes, dossiers, invoices, payments,
+and dashboard metrics.
 
 ## Features
 
-- GraphQL API for all main business resources
+- React interface for the main business workflows
+- Spring Boot GraphQL API for the main resources
 - PostgreSQL persistence with Spring Data JPA
 - Dashboard metrics for stock, employees, invoices, and dossiers
 - Data seeding for local development
@@ -14,6 +16,9 @@ delivery notes, STEG dossiers, invoices, payments, and dashboard metrics.
 
 ## Technologies
 
+- React 18
+- Vite
+- Tailwind CSS
 - Java 17
 - Spring Boot 3
 - Spring GraphQL
@@ -22,9 +27,21 @@ delivery notes, STEG dossiers, invoices, payments, and dashboard metrics.
 - Maven
 - Docker
 
-## Run locally
+## Project structure
 
-Set the database environment variables:
+```text
+backend/   Spring Boot GraphQL API
+frontend/  React and Vite dashboard
+```
+
+## Run the backend
+
+```bash
+cd backend
+mvn spring-boot:run
+```
+
+Set the database environment variables in `backend/.env`:
 
 ```bash
 DB_URL="jdbc:postgresql://localhost:5432/solar_management"
@@ -32,23 +49,28 @@ DB_USER="postgres"
 DB_PASSWORD="your-password"
 ```
 
-Start the application:
-
-```bash
-mvn spring-boot:run
-```
-
 The GraphQL endpoint is available at `http://localhost:9090/graphql`.
 GraphiQL is available at `http://localhost:9090/graphiql`.
 
-For Docker:
+## Run the frontend
 
 ```bash
+cd frontend
+npm install
+npm run dev
+```
+
+The dashboard is available at `http://localhost:5173`.
+
+## Run the backend with Docker
+
+```bash
+cd backend
 docker build -t solar-energy-management .
-docker run --rm -p 9090:9090 \
-  -e DB_URL="jdbc:postgresql://host.docker.internal:5432/solar_management" \
-  -e DB_USER="postgres" \
-  -e DB_PASSWORD="your-password" \
+docker run --rm -p 9090:9090 `
+  -e DB_URL="jdbc:postgresql://host.docker.internal:5432/solar_management" `
+  -e DB_USER="postgres" `
+  -e DB_PASSWORD="your-password" `
   solar-energy-management
 ```
 
