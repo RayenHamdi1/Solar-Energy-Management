@@ -1,0 +1,7 @@
+{
+  "rewrites": [
+    { "source": "/graphql", "destination": "https://solar-energy-backend.onrender.com/graphql" },
+    { "source": "/graphiql", "destination": "https://solar-energy-backend.onrender.com/graphiql" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
